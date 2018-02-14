@@ -1,0 +1,11 @@
+#ifndef TESTDISC_CPP
+#define TESTDISC_CPP
+
+#include "../src/grid.h"
+#include "gtest/gtest.h"
+
+TEST(GridTest, GridDefaultConstructor)
+{
+}
+
+#endif

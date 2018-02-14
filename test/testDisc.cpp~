@@ -1,0 +1,12 @@
+#ifndef TESTDISC_CPP
+#define TESTDISC_CPP
+
+#include "../src/disc.h"
+#include "gtest/gtest.h"
+
+TEST(DiscTest, DiscDefaultConstructor)
+{
+   Disc d();
+   EXPECT_FALSE(d.getColour());
+}
+#endif
