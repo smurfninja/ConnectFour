@@ -65,5 +65,5 @@ coverage: $(PROGRAM_TEST)
 static: ${SRC_DIR}
 	cppcheck --verbose --enable=all --xml ${SRC_DIR} ${TEST_DIR} ${INCLUDE} --suppress=missingInclude &> $(STATIC_RESULTS)
 
-#docs: ${DOXY_INCLUDE} 
-#	doxygen
+docs: ${DOXY_INCLUDE} 
+	doxygen

@@ -14,7 +14,27 @@ class Grid
 */
    explicit Grid();
 
+/**
+   Constructor:
+   Takes in three variables: int int bool
+   int x : height coordinate on graph
+   int y : width coordinate on graph
+   bool c : will specify the colour of the disc
 
+   NOTE This constructor will be used for testing only and
+   has no functionaliy in the actual game
+*/
+   explicit Grid(int x, int y, bool c);
+
+
+/**
+   Copy Constructor:
+   Copies the value in grid given to the new grid created
+*/
+   explicit Grid(Grid& g);
+
+   
+   
 /**
    Destructor:
 */
@@ -28,6 +48,8 @@ class Grid
    isEmpty() is FALSE when space is occupied
 */
    bool isEmpty(int i, int j);
+
+   
 /**
    Getter:
    Returns 0, 1, or 2
