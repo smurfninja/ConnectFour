@@ -1,0 +1,170 @@
+#ifndef GRID_H
+#define GRID_H
+#define HEIGHT 6
+#define WIDTH 7
+
+#include "disc.h"
+
+class Grid
+{
+  public:
+/**
+   Default Constructor:
+   Will generate a completely blank grid
+
+   How to Call:
+   Grid g; REGULAR
+   Grid *g = new Grid; POINTER
+*/
+   explicit Grid();
+
+/**
+   Constructor:
+   Takes in three variables: int int bool
+   int x : height coordinate on graph
+   int y : width coordinate on graph
+   bool c : will specify the colour of the disc
+   How to Call:
+   Grid g(x,y,c); REGULAR
+   Grid *g = new Grid(x,y,c); POINTER
+
+   NOTE This constructor will be used for testing only and
+   has no functionaliy in the actual game
+
+   Grid(x,y,TRUE) == (x,y)->RED
+   Grid(x,y,FALSE) == (x,y)->BLACK
+*/
+   explicit Grid(int x, int y, bool c);
+
+
+/**
+   Copy Constructor:
+   Copies the value in grid given to the new grid created
+
+   How to Call:
+   Grid *h = new Grid;
+   Grid i;
+   Grid g(*h); REGULAR
+   Grid *f(h); POINTER
+   Grid j(i);
+*/
+   explicit Grid(Grid& g);
+
+   
+/**
+   Destructor:
+*/
+   virtual ~Grid();
+
+
+/**
+   Assignment Operator
+
+   How to call:
+   Grid g;
+   Grid h;
+   h = g; Regular
+   
+   Grid *g = new Grid;
+   Grid *h = new Grid;
+   h = g; Pointer
+   
+   Grid *g = new Grid;
+   Grid h;
+   h = *g Pointer to Regular
+ */
+   Grid & operator=(const Grid &rhs);
+
+/**
+   Equality Operator ==
+ */
+   virtual bool operator==(const Grid &other) const;
+
+
+/**
+   InEquality Operator !=
+ */
+   virtual bool operator!=(const Grid &other) const;
+   
+/**
+   Is Empty Function:
+   Checks to see if the coordinates given is empty or not
+   isEmpty() is TRUE when space is empty
+   isEmpty() is FALSE when space is occupied
+*/
+   virtual bool isEmpty(int i, int j) const ;
+
+/**
+   Complete Grid Function
+   Checks to see if the whole grid is full
+*/
+   virtual bool isFull();
+/**
+   If finished Function:
+   checks two conditions:
+   1) if anybody has 4 in a row
+   2) if the grid is full
+ */
+   virtual bool isFinished();
+
+/**
+   Is Row Function:
+   Checks if there is four in a row on the vertical axis
+   takes in coordinate (i,j) as reference to the latest
+   disc played and thus the epicenter for any new potential
+   connections
+*/
+   virtual bool isRow(int i, int j);
+/**
+   Getter:
+   Returns 0, 1, or 2
+   0 - denotes empty spot, or nullptr found
+   1 - denotes black disc
+   2 - denotes red disc
+*/
+   virtual int getCoord(int i, int j) const ;
+
+   
+/**
+   Adder:
+   Returns nothing
+   takes in coordinates (height,width)
+   and boolean value for disc colour
+   0 == BLACK
+   1 == RED
+*/
+   virtual void addDisc(int x, int y, bool c);
+
+/**
+   Mover:
+   Copies disc at location (i,j) to location (x,y)
+   deletes disc at location (i,j)
+*/
+   virtual void moveDisc(int i, int j, int x, int y);
+
+/**
+   Drop:
+   Checks if space below disc is empty
+   if it is it moves it to the lower location
+*/
+   virtual void dropDisc(int i, int j, bool c);
+
+/**
+   Remove Funciton:
+   Removes a disc from a location pretty much
+   exclusively used by gravity in the drop
+   function
+*/
+   virtual void removeDisc(int i, int j);
+
+/**
+   Play Function:
+   This is the function that allows player
+   to place a tile in one spot on the top
+   row and let it fall to the bottom
+*/
+   virtual void play(int x, bool c);
+  private:
+   Disc *coord[HEIGHT][WIDTH];
+};
+#endif

@@ -1,10 +1,10 @@
 CXX=g++
 CXXFLAGS= -std=c++0x -g -fprofile-arcs -ftest-coverage
 
-LINKFLAGS= -lgtest
+LINKFLAGS= -lgtest /usr/src/gmock/gmock-all.cc -lpthread
 
 SRC_DIR = src
-SRCS =
+SRCS = ./src/control.cpp ./src/grid.cpp ./src/view.cpp
 
 TEST_DIR = test
 

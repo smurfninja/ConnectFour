@@ -1,0 +1,20 @@
+#ifndef VIEW_H
+#define VIEW_H
+
+#include "grid.h"
+#include "stdio.h"
+#include <stdlib.h>
+#include <iostream>
+#include <string>
+#include <cassert>
+
+class View
+{
+  public:
+   int getChoice(int p);
+   int getPlayers();
+   void viewDisc(int x);
+   void viewGrid(Grid &g);
+};
+
+#endif
